@@ -15,6 +15,7 @@
 		29A39148219BA39F00866C46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29A39147219BA39F00866C46 /* Assets.xcassets */; };
 		29A3914B219BA39F00866C46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29A39149219BA39F00866C46 /* LaunchScreen.storyboard */; };
 		29A39156219BA39F00866C46 /* FoodTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A39155219BA39F00866C46 /* FoodTrackerTests.swift */; };
+		29AD842F21B42A450087F161 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AD842E21B42A450087F161 /* Meal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		29A39151219BA39F00866C46 /* FoodTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		29A39155219BA39F00866C46 /* FoodTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTrackerTests.swift; sourceTree = "<group>"; };
 		29A39157219BA39F00866C46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		29AD842E21B42A450087F161 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				29A3914C219BA39F00866C46 /* Info.plist */,
 				29A39144219BA39E00866C46 /* FoodTracker.xcdatamodeld */,
 				296F394221A3D8A800D45FA6 /* RatingControl.swift */,
+				29AD842E21B42A450087F161 /* Meal.swift */,
 			);
 			path = FoodTracker;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29AD842F21B42A450087F161 /* Meal.swift in Sources */,
 				296F394321A3D8A800D45FA6 /* RatingControl.swift in Sources */,
 				29A39140219BA39E00866C46 /* ViewController.swift in Sources */,
 				29A3913E219BA39E00866C46 /* AppDelegate.swift in Sources */,

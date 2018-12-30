@@ -12,11 +12,25 @@ import UIKit
     
     //MARK Properties
     var ratingButtons = [UIButton]()
-    var ratingNumber = 0
+    var ratingNumber = 0 {
+        didSet {
+            updateButtonState()
+        }
+    }
     
     //allow it to create custom  atribut inspector programmatically
-    @IBInspectable var starSize: CGSize = CGSize(width: 44.0, height: 44.0)
-    @IBInspectable var starCount: Int = 5
+    @IBInspectable var starSize: CGSize = CGSize(width: 44.0, height: 44.0) {
+        //add observer property to observe and changes in property's value
+        didSet {
+            setupButton()
+        }
+    }
+    @IBInspectable var starCount: Int = 5 {
+        didSet {
+            //add observer property to observe and changes in property's value
+            setupButton()
+        }
+    }
     
     override init(frame: CGRect) {
         //init the view
@@ -30,16 +44,29 @@ import UIKit
         setupButton()
     }
     
-    //MARK Button Action
-    @objc func ratingButtonTapped(button: UIButton){
-        print("wik wik wik")
+    private func setupButton(){
+        //remove existing button
+        clearExistingButtons()
+        
+        //init button
+        initButton()
     }
     
-    private func setupButton(){
-        //init button
+    func initButton(){
+        //load image
+        let bundle = Bundle(for: type(of: self))
+        let filledStar = UIImage(named: "filled-star", in: bundle, compatibleWith: self.traitCollection)
+        let emptyStar = UIImage(named: "empty-star", in: bundle, compatibleWith: self.traitCollection)
+        let colorStar = UIImage(named: "color-star", in: bundle, compatibleWith: self.traitCollection)
+        
+        //create list of button
         for _ in 0..<starCount {
             let button = UIButton()
-            button.backgroundColor = UIColor.red
+            
+            //set button to images
+            button.setImage(filledStar, for: .selected)
+            button.setImage(emptyStar, for: .normal)
+            button.setImage(colorStar, for: [.highlighted,.selected])
             
             //add constraint to button
             button.translatesAutoresizingMaskIntoConstraints = false
@@ -55,6 +82,36 @@ import UIKit
             //add the new button to the rating button array
             ratingButtons.append(button)
         }
+        updateButtonState()
+    }
+    
+    //MARK Button Action
+    @objc func ratingButtonTapped(button: UIButton){
+        guard let indexButton = ratingButtons.index(of: button) else {
+            fatalError("The Button, \(button) is not one of the rating buttons ")
+        }
+        
+        let selectedRating = 1 + indexButton;
+        if selectedRating == ratingNumber {
+            ratingNumber = 0;
+        } else {
+            ratingNumber = selectedRating
+        }
+    }
+    
+    private func updateButtonState() {
+        for(index,button) in ratingButtons.enumerated(){
+            button.isSelected = index < ratingNumber
+        }
+        
+    }
+    
+    private func clearExistingButtons(){
+        for button in ratingButtons {
+            removeArrangedSubview(button)
+            button.removeFromSuperview()
+        }
+        ratingButtons.removeAll()
     }
     
 }
