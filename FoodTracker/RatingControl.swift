@@ -55,9 +55,9 @@ import UIKit
     func initButton(){
         //load image
         let bundle = Bundle(for: type(of: self))
-        let filledStar = UIImage(named: "filled-star", in: bundle, compatibleWith: self.traitCollection)
+        let filledStar = UIImage(named: "color-star", in: bundle, compatibleWith: self.traitCollection)
         let emptyStar = UIImage(named: "empty-star", in: bundle, compatibleWith: self.traitCollection)
-        let colorStar = UIImage(named: "color-star", in: bundle, compatibleWith: self.traitCollection)
+        let colorStar = UIImage(named: "filled-star", in: bundle, compatibleWith: self.traitCollection)
         
         //create list of button
         for _ in 0..<starCount {
